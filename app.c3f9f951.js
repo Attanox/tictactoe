@@ -120,19 +120,45 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"js/app.js":[function(require,module,exports) {
 // changing width of left side
 document.querySelector(".left").addEventListener("mouseover", function () {
-  document.querySelector(".right").style.width = '40%';
-  this.style.width = '60%';
-  document.querySelector(".right .text").style.fontSize = '1.8rem';
-  document.querySelector(".left .text").style.fontSize = '2.2rem';
+  if (window.innerHeight > 768) {
+    document.querySelector(".right").style.width = '40%';
+    this.style.width = '60%';
+    document.querySelector(".right .text").style.fontSize = '1.8rem';
+    document.querySelector(".left .text").style.fontSize = '2.2rem';
+  } else {
+    document.querySelector(".right").style.width = '48%';
+    this.style.width = '52%';
+    document.querySelector(".right .text").style.fontSize = '1.2rem';
+    document.querySelector(".left .text").style.fontSize = '1.4rem';
+  }
+
   document.querySelectorAll(".right img")[1].style.visibility = 'hidden';
 }); // changing width of right side
 
 document.querySelector(".right").addEventListener("mouseover", function () {
-  document.querySelector(".left").style.width = '40%';
-  this.style.width = '60%';
-  document.querySelector(".left .text").style.fontSize = '1.8rem';
-  document.querySelector(".right .text").style.fontSize = '2.2rem';
+  if (window.innerWidth > 768) {
+    document.querySelector(".left").style.width = '40%';
+    this.style.width = '60%';
+    document.querySelector(".left .text").style.fontSize = '1.8rem';
+    document.querySelector(".right .text").style.fontSize = '2.2rem';
+  } else {
+    document.querySelector(".left").style.width = '48%';
+    this.style.width = '52%';
+    document.querySelector(".left .text").style.fontSize = '1.2rem';
+    document.querySelector(".right .text").style.fontSize = '1.4rem';
+  }
+
   document.querySelectorAll(".right img")[1].style.visibility = 'visible';
+}); // starting game after choosing
+
+document.querySelector(".right").addEventListener("click", function () {
+  document.querySelector(".choose").style.display = 'none';
+  document.querySelector("body").style.backgroundImage = 'linear-gradient(to right, #4facfe 0%, #00f2fe 100%)';
+}); // starting game after choosing
+
+document.querySelector(".left").addEventListener("click", function () {
+  document.querySelector(".choose").style.display = 'none';
+  document.querySelector("body").style.backgroundImage = 'linear-gradient(120deg, #f093fb 0%, #f5576c 100%)';
 });
 },{}],"C:/Users/Andy/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -162,7 +188,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53026" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53739" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
